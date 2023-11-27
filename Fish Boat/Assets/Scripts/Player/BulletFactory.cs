@@ -63,12 +63,6 @@ void Shoot01()
         Rigidbody bulletRB = bullet.GetComponent<Rigidbody>();
         bulletRB.velocity = bullet.transform.forward * 30f;
 
-        AudioSource playerAudio01 = GetComponent<AudioSource>();
-        if (playerAudio01 != null)
-        {
-            playerAudio01.Play();
-        }
-
         StartCoroutine(ReturnBulletToPool(bullet));
     }
     

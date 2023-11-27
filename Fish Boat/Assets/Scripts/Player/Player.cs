@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,10 +9,10 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     
+    public int killAmount;
     private float playerSpeed = 10.0f;
     private CharacterController controller;
     private Vector2 movementInput = Vector2.zero;
-
 
     public void onMove(InputAction.CallbackContext context)
     {
@@ -25,10 +26,30 @@ public class Player : MonoBehaviour
         controller = gameObject.GetComponent<CharacterController>();
     }
 
+    private void OnEnemyKilled(int killCount)
+    {
+       Debug.Log(killCount);
+    }
+
     // Update is called once per frame
     void Update()
     {
         Vector3 move = new Vector3(-movementInput.y, 0,movementInput.x );
         controller.Move(move * Time.deltaTime * playerSpeed);
+    }
+
+    private void onKillEventHandler(int killHandler)
+    {
+        this.killAmount += 1;
+        
+        Debug.Log("Kills Made: " + killAmount);
+
+        // Perform actions based on the number of coins collected
+        // For example:
+        if (killAmount >= 10)
+        {
+            // Do something specific when 10 or more coins are collected
+            Debug.Log("You have Won");
+        }
     }
 }
