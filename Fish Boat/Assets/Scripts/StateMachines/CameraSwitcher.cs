@@ -3,7 +3,8 @@ using Cinemachine;
 
 public class CameraSwitcher : MonoBehaviour
 {
-    public CinemachineVirtualCameraBase[] cameras; // Array of virtual cameras
+    [SerializeField]
+    private CinemachineVirtualCameraBase[] cameras; // Array of virtual cameras
 
     private int currentCameraIndex = 0;
 
@@ -36,4 +37,5 @@ public class CameraSwitcher : MonoBehaviour
         cameras[index].gameObject.SetActive(true);
     }
 }
+
 
