@@ -14,4 +14,14 @@ public class MenuManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void returnToMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void retry()
+    {
+        SceneManager.LoadScene("OutdoorsScene");
+    }
 }

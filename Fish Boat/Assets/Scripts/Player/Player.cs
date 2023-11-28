@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(CharacterController))]
 
@@ -15,10 +16,13 @@ public class Player : MonoBehaviour
 
     private int damageTaken = 10;
 
+    public UnityEvent ondeath;
+
     public int killAmount;
     private float playerSpeed = 10.0f;
     private CharacterController controller;
     private Vector2 movementInput = Vector2.zero;
+
 
     public void onMove(InputAction.CallbackContext context)
     {
@@ -29,14 +33,14 @@ public class Player : MonoBehaviour
     {
 
 
-        if (collision.gameObject.CompareTag("Bullet"))
+        if (collision.gameObject.CompareTag("EnemyBullet"))
         {
             currentHealth = currentHealth - damageTaken;
             Debug.Log("taken bullet");
 
             if (currentHealth <= 0)
             {
-                SceneManager.LoadScene("MainMenu");
+                onDeath();
             }
         }
 
@@ -73,5 +77,10 @@ public class Player : MonoBehaviour
             // Do something specific when 10 or more coins are collected
             Debug.Log("You have Won");
         }
+    }
+
+    public void onDeath()
+    {
+        SceneManager.LoadScene("Death");
     }
 }
