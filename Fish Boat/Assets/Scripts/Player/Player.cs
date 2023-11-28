@@ -3,12 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 
 public class Player : MonoBehaviour
 {
     
+    public int currentHealth = 100;
+    public int maxHealth = 100;
+
+    private int damageTaken = 10;
+
     public int killAmount;
     private float playerSpeed = 10.0f;
     private CharacterController controller;
@@ -19,6 +25,22 @@ public class Player : MonoBehaviour
         movementInput = context.ReadValue<Vector2>();
     }
     
+    private void OnCollisionEnter(Collision collision)
+    {
+
+
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            currentHealth = currentHealth - damageTaken;
+            Debug.Log("taken bullet");
+
+            if (currentHealth <= 0)
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
+        }
+
+    }
 
     // Start is called before the first frame update
     void Start()

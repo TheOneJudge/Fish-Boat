@@ -6,30 +6,44 @@ using UnityEngine.Events;
 
 public class FlapperEnemy : ENEMY
 {
-    private int damageTaken = 100;
+    private int damageTaken = 50;
 
     public UnityEvent deathEvent;
+
+    public ParticleSystem vfxParticleSystem;
+
+    public void PlayVFX()
+    {
+        if (vfxParticleSystem != null)
+        {
+            // Check if the Particle System is not already playing
+            if (!vfxParticleSystem.isPlaying)
+            {
+                // Play the Particle System
+                vfxParticleSystem.Play();
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Particle System reference not set!");
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
-        Health = Health - damageTaken;
-        
+
+
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            Debug.Log("collison");
-            
-            
-        }
-        else if (collision.gameObject.CompareTag("Obstacle"))
-        {
-            // Perform actions specific to objects with the "Obstacle" tag
-            Debug.Log("Collided with an obstacle!");
-            // Add code here to handle collision with an obstacle
-        }
+            Health = Health - damageTaken;
+            Debug.Log("taken bullet");
 
-        if (Health <= 0)
-        {
-            this.onDeath();
-            deathEvent.Invoke();
+            if (Health <= 0)
+            {
+                this.onDeath();
+                deathEvent.Invoke();
+                PlayVFX();
+            }
         }
 
     }
@@ -37,6 +51,6 @@ public class FlapperEnemy : ENEMY
     public override void onDeath()
     {
         base.onDeath();
-        Debug.Log("flappy has died");
+        Debug.Log("Swimmer has died");
     }
 }

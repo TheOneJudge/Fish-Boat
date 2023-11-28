@@ -5,10 +5,10 @@ using UnityEngine.Events;
 
 public class SwimmerEnemy : ENEMY
 {
-    private int damageTaken = 100;
+    private int damageTaken = 20;
 
     public UnityEvent deathEvent;
-    
+
     public ParticleSystem vfxParticleSystem;
 
     public void PlayVFX()
@@ -27,29 +27,22 @@ public class SwimmerEnemy : ENEMY
             Debug.LogWarning("Particle System reference not set!");
         }
     }
-    
+
     private void OnCollisionEnter(Collision collision)
     {
-        Health = Health - damageTaken;
-        
+
+
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            Debug.Log("collison");
-            
-            
-        }
-        else if (collision.gameObject.CompareTag("Obstacle"))
-        {
-            // Perform actions specific to objects with the "Obstacle" tag
-            Debug.Log("Collided with an obstacle!");
-            // Add code here to handle collision with an obstacle
-        }
+            Health = Health - damageTaken;
+            Debug.Log("taken bullet");
 
-        if (Health <= 0)
-        {
-            this.onDeath();
-            deathEvent.Invoke();
-            PlayVFX();
+            if (Health <= 0)
+            {
+                this.onDeath();
+                deathEvent.Invoke();
+                PlayVFX();
+            }
         }
 
     }

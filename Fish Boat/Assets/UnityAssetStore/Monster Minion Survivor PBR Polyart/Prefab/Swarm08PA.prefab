@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 824187794674860187}
   - component: {fileID: 935239177575416298}
   - component: {fileID: 8823582132290050976}
+  - component: {fileID: 2404927008766712419}
   m_Layer: 0
   m_Name: Swarm08PA
   m_TagString: Untagged
@@ -69,11 +70,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f0b467cdaac1dc49a4855a7de3a4bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRadius: 15
-  projectilePrefab: {fileID: 8808983455828858085, guid: 003cd93ca81add64c971bcaf95e3ea59,
+  enemy: {fileID: 2404927008766712419}
+  player: {fileID: 4960869198435816574, guid: 409b6c1e07f353341b090bb9236118b6, type: 3}
+  timer: 5
+  enemyBullet: {fileID: 4902748777137756219, guid: c3c6d660a35df6547910906770b3f94e,
     type: 3}
-  shootDelay: 3
-  attackDirection: {fileID: 7264090652366106108}
+  spawnPoint: {fileID: 7264090652366106108}
+  enemySpeed: 3
+--- !u!195 &2404927008766712419
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16829958793894433}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &366229167135885180
 GameObject:
   m_ObjectHideFlags: 0
