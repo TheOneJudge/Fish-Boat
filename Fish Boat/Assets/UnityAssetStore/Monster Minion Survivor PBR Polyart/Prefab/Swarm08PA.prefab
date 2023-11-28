@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 824187794674860187}
   - component: {fileID: 935239177575416298}
+  - component: {fileID: 8823582132290050976}
   m_Layer: 0
   m_Name: Swarm08PA
   m_TagString: Untagged
@@ -31,6 +32,7 @@ Transform:
   m_Children:
   - {fileID: 7890686326472323489}
   - {fileID: 6193117057673137929}
+  - {fileID: 7264090652366106108}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -55,6 +57,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8823582132290050976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16829958793894433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f0b467cdaac1dc49a4855a7de3a4bf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRadius: 15
+  projectilePrefab: {fileID: 8808983455828858085, guid: 003cd93ca81add64c971bcaf95e3ea59,
+    type: 3}
+  shootDelay: 3
+  attackDirection: {fileID: 7264090652366106108}
 --- !u!1 &366229167135885180
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,6 +425,37 @@ Transform:
   - {fileID: 4057972531496939640}
   m_Father: {fileID: 824187794674860187}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5470587713161056871
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7264090652366106108}
+  m_Layer: 0
+  m_Name: Shoot Direction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7264090652366106108
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5470587713161056871}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.223, z: 0.661}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 824187794674860187}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5517760389805200271
 GameObject:

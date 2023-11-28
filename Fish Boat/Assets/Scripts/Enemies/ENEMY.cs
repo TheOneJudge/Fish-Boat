@@ -6,6 +6,8 @@ public class ENEMY : MonoBehaviour
 {
     public int Health = 100;
     
+    
+
     public virtual void onDeath()
     {
         gameObject.SetActive(false);

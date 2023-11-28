@@ -1,14 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class FlapperEnemy : ENEMY
+public class SwimmerEnemy : ENEMY
 {
     private int damageTaken = 100;
 
     public UnityEvent deathEvent;
+    
+    public ParticleSystem vfxParticleSystem;
+
+    public void PlayVFX()
+    {
+        if (vfxParticleSystem != null)
+        {
+            // Check if the Particle System is not already playing
+            if (!vfxParticleSystem.isPlaying)
+            {
+                // Play the Particle System
+                vfxParticleSystem.Play();
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Particle System reference not set!");
+        }
+    }
+    
     private void OnCollisionEnter(Collision collision)
     {
         Health = Health - damageTaken;
@@ -30,6 +49,7 @@ public class FlapperEnemy : ENEMY
         {
             this.onDeath();
             deathEvent.Invoke();
+            PlayVFX();
         }
 
     }
